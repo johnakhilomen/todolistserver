@@ -43,8 +43,8 @@ app.get('/todo', (req,res) => {
 app.get('/todo/:id', (req,res) => {
     const {id} =  req.params
     db('todo').where({
-        id: id
-    }).select('todo','noteid', 'id',"done")
+        noteid: id
+    }).select('todo','noteid', 'id')
 
     .then(item => {
         res.json(item)

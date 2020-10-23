@@ -32,6 +32,14 @@ app.get('/', (req, res) => {
 	res.send("it is working!!")
 })
 
+app.get('/todo', (req,res) => {
+    const {id} =  req.params
+    db('todo').select('todo','noteid', 'id')
+    .then(item => {
+        res.json(item);
+    })
+});
+
 app.get('/todo/:id', (req,res) => {
     const {id} =  req.params
     db('todo').where({
@@ -41,7 +49,7 @@ app.get('/todo/:id', (req,res) => {
     .then(item => {
         res.json(item)
     })
-})
+});
 
 app.delete('/todo/:id', (req, res) => {
     const {id} = req.params
